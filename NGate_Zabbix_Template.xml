@@ -13,7 +13,9 @@
             <template>Ngate</template>
             <name>Ngate</name>
             <description>Ngate Zabbix Template for Zabbix 7.0
-Made by alonebyte</description>
+    Made by alonebyte 
+            https://github.com/alonebyte/ngate_zabbix_template 
+            </description>
             <groups>
                 <group>
                     <name>Templates/Network devices</name>
