@@ -1,0 +1,1088 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>7.0</version>
+    <template_groups>
+        <template_group>
+            <uuid>36bff6c29af64692839d077febfc7079</uuid>
+            <name>Templates/Network devices</name>
+        </template_group>
+    </template_groups>
+    <templates>
+        <template>
+            <uuid>0229a837dcd6493b85be97ddc492aab0</uuid>
+            <template>Ngate</template>
+            <name>Ngate</name>
+            <description>Ngate Zabbix Template for Zabbix 7.0
+Made by alonebyte</description>
+            <groups>
+                <group>
+                    <name>Templates/Network devices</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>5c5fe8e3b52a4c49989b758955be1349</uuid>
+                    <name>Температура самого горячего ядра CPU в градусах</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.18.110.103.95.67.80.85.95.116.101.109.112.101.114.97.116.117.114.101.1</snmp_oid>
+                    <key>ng_CPU_temperature</key>
+                    <delay>10m</delay>
+                    <value_type>FLOAT</value_type>
+                    <description>Температура самого горячего ядра CPU в градусах
+Значение &gt; 80 — тревожное оповещение (ALARM)</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>65b5fc949d8a45d29025329c8e425e05</uuid>
+                            <expression>last(/Ngate/ng_CPU_temperature)&gt;=80</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_CPU_temperature)&lt;80</recovery_expression>
+                            <name>Температура самого горячего ядра CPU в градусах &gt; 80</name>
+                            <priority>DISASTER</priority>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>2822075221ca4ff2b1c08e4743894108</uuid>
+                    <name>Даты окончания сроков действия сертификатов и контейнеров ключей в формате JSON</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.3.1.2.25.110.103.95.99.114.101.100.101.110.116.105.97.108.115.95.101.120.112.105.114.97.116.105.111.110</snmp_oid>
+                    <key>ng_credentials_expiration</key>
+                    <delay>1d</delay>
+                    <value_type>TEXT</value_type>
+                    <trends>0</trends>
+                    <description>Даты окончания сроков действия сертификатов и контейнеров ключей в формате JSON
+Следует распарсить JSON для извлечения необходимых значений</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>15cd4d37950d45bbbd9e1c037ad3da8f</uuid>
+                    <name>Сроки действия сертификатов и контейнеров ключей для порталов заканчиваются в течение месяца</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.25.110.103.95.99.114.101.100.95.101.120.112.105.114.121.95.99.111.110.102.105.103.95.49.95.109.1</snmp_oid>
+                    <key>ng_cred_expiry_config_1_m</key>
+                    <delay>1d</delay>
+                    <description>Сроки действия сертификатов и контейнеров ключей для порталов заканчиваются в течение месяца.
+0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>03a9c69b3d0a4133a82ae657e7c7bf3e</uuid>
+                            <expression>last(/Ngate/ng_cred_expiry_config_1_m)&lt;&gt;0</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_cred_expiry_config_1_m)=0</recovery_expression>
+                            <name>Ошибка проверки срока действия сертификатов и контейнеров ключей для порталов</name>
+                            <priority>AVERAGE</priority>
+                            <description>0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>200ba5222fcb41be9530d4c35dbd9597</uuid>
+                            <expression>last(/Ngate/ng_cred_expiry_config_1_m)=1</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_cred_expiry_config_1_m)=0</recovery_expression>
+                            <name>Сроки действия сертификатов и контейнеров ключей для порталов заканчиваются в течение месяца</name>
+                            <priority>HIGH</priority>
+                            <description>0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>5f72c3cb8914476ca0d524ba1117794a</uuid>
+                    <name>Сроки действия сертификатов и контейнеров ключей для порталов закончились</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.25.110.103.95.99.114.101.100.95.101.120.112.105.114.121.95.99.111.110.102.105.103.95.110.111.119.1</snmp_oid>
+                    <key>ng_cred_expiry_config_now</key>
+                    <delay>1d</delay>
+                    <description>Сроки действия сертификатов и контейнеров ключей для порталов закончились
+0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>adeebc56c9634e3c9301a8a5a8581bff</uuid>
+                            <expression>last(/Ngate/ng_cred_expiry_config_now)&lt;&gt;0</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_cred_expiry_config_now)=0</recovery_expression>
+                            <name>Ошибка проверки срока действия сертификатов и контейнеров ключей для порталов</name>
+                            <priority>AVERAGE</priority>
+                            <description>0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>91f6c93e222c470ca72a347ddb20f761</uuid>
+                            <expression>last(/Ngate/ng_cred_expiry_config_now)=1</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_cred_expiry_config_now)=0</recovery_expression>
+                            <name>Сроки действия сертификатов и контейнеров ключей для порталов закончились</name>
+                            <priority>DISASTER</priority>
+                            <description>0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>52ffbfa4ae4c42dda762adebcee0a581</uuid>
+                    <name>Сроки действия сертификатов и контейнеров ключей внутренней PKI заканчиваются в течение месяца</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.24.110.103.95.99.114.101.100.95.101.120.112.105.114.121.95.105.110.102.114.97.95.49.95.109.1</snmp_oid>
+                    <key>ng_cred_expiry_infra_1_m</key>
+                    <delay>1d</delay>
+                    <description>Сроки действия сертификатов и контейнеров ключей внутренней PKI заканчиваются в течение месяца
+
+0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>cebfc04a29e843a1a247a9cf3ea915ce</uuid>
+                            <expression>last(/Ngate/ng_cred_expiry_infra_1_m)&lt;&gt;0</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_cred_expiry_infra_1_m)=0</recovery_expression>
+                            <name>Ошибка проверки срока действия сертификатов и контейнеров ключей внутренней PKI</name>
+                            <priority>AVERAGE</priority>
+                            <description>0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>b952b45ba8b14e5999c81ac3c9f036aa</uuid>
+                            <expression>last(/Ngate/ng_cred_expiry_infra_1_m)=1</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_cred_expiry_infra_1_m)=0</recovery_expression>
+                            <name>Сроки действия сертификатов и контейнеров ключей внутренней PKI заканчиваются в течение месяца</name>
+                            <priority>HIGH</priority>
+                            <description>0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>cd6f8ab2fd6246d8b6689de4cf77b082</uuid>
+                    <name>Сроки действия сертификатов и контейнеров ключей внутренней PKI (NGate) закончились</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.24.110.103.95.99.114.101.100.95.101.120.112.105.114.121.95.105.110.102.114.97.95.110.111.119.1</snmp_oid>
+                    <key>ng_cred_expiry_infra_now</key>
+                    <delay>1d</delay>
+                    <description>Сроки действия сертификатов и контейнеров ключей внутренней PKI (NGate) закончились
+
+0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>dc5257ad63ef48308bfaeca804d943de</uuid>
+                            <expression>last(/Ngate/ng_cred_expiry_infra_now)&lt;&gt;0</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_cred_expiry_infra_now)=0</recovery_expression>
+                            <name>Ошибка проверки срока действия сертификатов и контейнеров ключей внутренней PKI</name>
+                            <priority>AVERAGE</priority>
+                            <description>0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>3bdc9a782ebe44bf9a6dc1807a7ffddd</uuid>
+                            <expression>last(/Ngate/ng_cred_expiry_infra_now)=1</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_cred_expiry_infra_now)=0</recovery_expression>
+                            <name>Сроки действия сертификатов и контейнеров ключей внутренней PKI (NGate) закончились</name>
+                            <priority>DISASTER</priority>
+                            <description>0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>1fe5c24601cc4065b2a0e3f7270e3939</uuid>
+                    <name>Сроки действия сертификатов и контейнеров ключей сервисных ключей заканчиваются в течение месяца</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.26.110.103.95.99.114.101.100.95.101.120.112.105.114.121.95.115.101.114.118.105.99.101.95.49.95.109.1</snmp_oid>
+                    <key>ng_cred_expiry_service_1_m</key>
+                    <delay>1d</delay>
+                    <description>Сроки действия сертификатов и контейнеров ключей сервисных ключей заканчиваются в течение месяца
+0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>0eadfb72222148498d9f9801f9098f05</uuid>
+                            <expression>last(/Ngate/ng_cred_expiry_service_1_m)&lt;&gt;0</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_cred_expiry_service_1_m)=0</recovery_expression>
+                            <name>Ошибка проверки срока действия сертификатов и контейнеров ключей сервисных ключей</name>
+                            <priority>AVERAGE</priority>
+                            <description>0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>92adb5e226a1439291a8753900f9e122</uuid>
+                            <expression>last(/Ngate/ng_cred_expiry_service_1_m)=1</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_cred_expiry_service_1_m)=0</recovery_expression>
+                            <name>Сроки действия сертификатов и контейнеров ключей сервисных ключей заканчиваются в течение месяца</name>
+                            <priority>HIGH</priority>
+                            <description>0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>8723b9c647eb4986972a9957db8e6b7c</uuid>
+                    <name>Сроки действия сертификатов и контейнеров ключей сервисных ключей закончились</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.26.110.103.95.99.114.101.100.95.101.120.112.105.114.121.95.115.101.114.118.105.99.101.95.110.111.119.1</snmp_oid>
+                    <key>ng_cred_expiry_service_now</key>
+                    <delay>1d</delay>
+                    <description>Сроки действия сертификатов и контейнеров ключей сервисных ключей закончились
+0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>e1d7861dd6124badb91f3db0adb19f73</uuid>
+                            <expression>last(/Ngate/ng_cred_expiry_service_now)&lt;&gt;0</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_cred_expiry_service_now)=0</recovery_expression>
+                            <name>Ошибка проверки срока действия сертификатов и контейнеров ключей сервисных ключей</name>
+                            <priority>AVERAGE</priority>
+                            <description>0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>ba14c7eb9f3542dbb20fa9464fc68790</uuid>
+                            <expression>last(/Ngate/ng_cred_expiry_service_now)=1</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_cred_expiry_service_now)=0</recovery_expression>
+                            <name>Сроки действия сертификатов и контейнеров ключей сервисных ключей закончились</name>
+                            <priority>DISASTER</priority>
+                            <description>0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>678845f0633140a9b266be0dbdf2f9f6</uuid>
+                    <name>ng_extended_healthcheck</name>
+                    <type>HTTP_AGENT</type>
+                    <key>ng_extended_healthcheck</key>
+                    <delay>10m</delay>
+                    <value_type>TEXT</value_type>
+                    <trends>0</trends>
+                    <url>http://{HOST.IP}:7020/extended_healthcheck</url>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>679f58d8173d415fbb037b66fd2f5a9e</uuid>
+                            <expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Result&quot;)&lt;&gt;0</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Result&quot;)=0</recovery_expression>
+                            <name>Ошибка расширенной проверки extended_healthcheck</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>024ac1a463a6476184129df14e1f2785</uuid>
+                            <expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Reply.Status[\&quot;config-demon\&quot;]&quot;)&lt;&gt;&quot;OK&quot;</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Reply.Status[\&quot;config-demon\&quot;]&quot;)=&quot;OK&quot;</recovery_expression>
+                            <name>Проблема с сервисом config-demon</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>b61c86fc84c34ccb8149c912e7d3513b</uuid>
+                            <expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Reply.Status[\&quot;directory-service\&quot;]&quot;)&lt;&gt;&quot;OK&quot;</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Reply.Status[\&quot;directory-service\&quot;]&quot;)=&quot;OK&quot;</recovery_expression>
+                            <name>Проблема с сервисом directory-service</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>f01fb254f57c4952ab498059e444eb87</uuid>
+                            <expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Reply.Status[\&quot;ip-ws-proxy\&quot;]&quot;)&lt;&gt;&quot;OK&quot;</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Reply.Status[\&quot;ip-ws-proxy\&quot;]&quot;)=&quot;OK&quot;</recovery_expression>
+                            <name>Проблема с сервисом ip-ws-proxy</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>36f4a1e552e04321804e0fe206af2d3e</uuid>
+                            <expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Reply.Status[\&quot;nginx\&quot;]&quot;)&lt;&gt;&quot;OK&quot;</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Reply.Status[\&quot;nginx\&quot;]&quot;)=&quot;OK&quot;</recovery_expression>
+                            <name>Проблема с сервисом nginx</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>9b6537b0232b4837adc1786e6d167268</uuid>
+                            <expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Reply.Status[\&quot;ssh\&quot;]&quot;)&lt;&gt;&quot;OK&quot;</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Reply.Status[\&quot;ssh\&quot;]&quot;)=&quot;OK&quot;</recovery_expression>
+                            <name>Проблема с сервисом ssh</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>9d0fcda066c849979017831bc1c105d9</uuid>
+                            <expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Reply.Status[\&quot;tarantool\&quot;]&quot;)&lt;&gt;&quot;OK&quot;</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>jsonpath(last(/Ngate/ng_extended_healthcheck),&quot;$.Reply.Status[\&quot;tarantool\&quot;]&quot;)=&quot;OK&quot;</recovery_expression>
+                            <name>Проблема с сервисом tarantool</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>7065fc9fd9cb4bbaaa1649d2c821d609</uuid>
+                    <name>Количество входящих активных https-соединений</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.104.116.116.112.115.95.99.111.110.110.95.105.110.95.97.99.116.105.118.101.1</snmp_oid>
+                    <key>ng_https_conn_in_active</key>
+                    <delay>10m</delay>
+                    <description>Количество входящих активных https-соединений</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>2091a90cd0fd454990e4d34a6a0a6720</uuid>
+                    <name>Общее количество входящих https-соединений</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.22.110.103.95.104.116.116.112.115.95.99.111.110.110.95.105.110.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_https_conn_in_total</key>
+                    <delay>10m</delay>
+                    <description>По результатам текущего мониторинга с учетом политики информационной безопасности организации</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>5a2653b7a58d465fbee93ddcd895b4a7</uuid>
+                    <name>Количество входящих уникальных https-соединений</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.104.116.116.112.115.95.99.111.110.110.95.105.110.95.117.110.105.113.117.101.1</snmp_oid>
+                    <key>ng_https_conn_in_unique</key>
+                    <delay>10m</delay>
+                    <description>Количество входящих уникальных https-соединений</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>ed1393aca32444e6a2c7ca42468deb10</uuid>
+                    <name>Количество активных исходящих http-соединений</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.104.116.116.112.95.99.111.110.110.95.111.117.116.95.97.99.116.105.118.101.1</snmp_oid>
+                    <key>ng_http_conn_out_active</key>
+                    <delay>10m</delay>
+                    <description>Количество активных исходящих http-соединений</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>10512c859e644794b9a36d4792dbf3b7</uuid>
+                    <name>Общее количество исходящих http-соединений</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.22.110.103.95.104.116.116.112.95.99.111.110.110.95.111.117.116.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_http_conn_out_total</key>
+                    <delay>10m</delay>
+                    <description>Общее количество исходящих http-соединений</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>29eecefd9ade468597d0412089f9b26a</uuid>
+                    <name>Текущая скорость обработки трафика на вход и на выход</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.18.110.103.95.105.112.115.101.99.95.98.112.115.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_ipsec_bps_total</key>
+                    <delay>10m</delay>
+                    <status>DISABLED</status>
+                    <description>Текущая скорость обработки трафика на вход и на выход
+Измеряется в байтах в секунду</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>99efee17cffa491fa6730078ad40af38</uuid>
+                    <name>Общий объем обработанного трафика</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.20.110.103.95.105.112.115.101.99.95.98.121.116.101.115.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_ipsec_bytes_total</key>
+                    <delay>10m</delay>
+                    <status>DISABLED</status>
+                    <description>Общий объем обработанного трафика
+Измеряется в байтах</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>0cba761198fa4aee827c3793bb5dcc6b</uuid>
+                    <name>Общее количество установленных ESP соединений (ESP SA)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.105.112.115.101.99.95.101.115.112.95.99.111.110.110.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_ipsec_esp_conn_total</key>
+                    <delay>10m</delay>
+                    <status>DISABLED</status>
+                    <description>Общее количество установленных ESP соединений (ESP SA)</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>cd564f40b7554952b250e855cbf38a3b</uuid>
+                    <name>Количество пакетов (в рамках текущих установленных соединений) с неверной информацией для аутентификации</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.29.110.103.95.105.112.115.101.99.95.102.97.105.108.101.100.95.112.97.99.107.101.116.115.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_ipsec_failed_packets_total</key>
+                    <delay>10m</delay>
+                    <status>DISABLED</status>
+                    <description>Количество пакетов (в рамках текущих установленных соединений) с неверной информацией для аутентификации
+Резкое увеличение может свидетельствовать как о появлении проблем в канале передачи данных, приводящих к порче содержимого IP-пакета, так и о попытке злоумышленника провести атаку</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>dde8dcb219ab484f9d7a88030bee154e</uuid>
+                    <name>Общий объем используемых hugepages</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.26.110.103.95.105.112.115.101.99.95.104.117.103.101.112.97.103.101.115.95.107.98.95.117.115.101.100.1</snmp_oid>
+                    <key>ng_ipsec_hugepages_kb_used</key>
+                    <delay>10m</delay>
+                    <status>DISABLED</status>
+                    <description>Общий объем используемых hugepages
+Измеряется в килобайтах</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>e70f3374f2a04c3a81b0c99fa0bf38fe</uuid>
+                    <name>Общее количество установленных IKE соединений (IKE SA)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.105.112.115.101.99.95.105.107.101.95.99.111.110.110.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_ipsec_ike_conn_total</key>
+                    <delay>10m</delay>
+                    <status>DISABLED</status>
+                    <description>Общее количество установленных IKE соединений (IKE SA)</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>0bb6bb01a238459f83bf0931404e7ae2</uuid>
+                    <name>Загрузка основного ядра IPsec, осуществляющего распределение пакетов (main worker core)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.105.112.115.101.99.95.109.97.105.110.95.99.111.114.101.95.108.111.97.100.1</snmp_oid>
+                    <key>ng_ipsec_main_core_load</key>
+                    <delay>10m</delay>
+                    <status>DISABLED</status>
+                    <description>Загрузка основного ядра IPsec, осуществляющего распределение пакетов (main worker core)
+Значение от 0 до 100 в процентах. Значения выше 90 свидетельствуют о достижении предельной производительности</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>a2a82a0ef580454a97bc59418f47eb5c</uuid>
+                            <expression>last(/Ngate/ng_ipsec_main_core_load)&gt;=90</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_ipsec_main_core_load)&lt;90</recovery_expression>
+                            <name>Загрузка основного ядра IPsec больше 90%</name>
+                            <status>DISABLED</status>
+                            <priority>HIGH</priority>
+                            <description>Значения выше 90 свидетельствуют о достижении предельной производительности</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>5a248fdf61a746d7af68ca1310273703</uuid>
+                    <name>Оценка количества потерянных входящих пакетов у текущих соединений</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.21.110.103.95.105.112.115.101.99.95.109.105.115.115.101.100.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_ipsec_missed_total</key>
+                    <delay>10m</delay>
+                    <status>DISABLED</status>
+                    <description>Оценка количества потерянных входящих пакетов у текущих соединений
+Резкий рост примерного количества потерянных входящих пакетов, рассчитываемого на основе анализа сквозной нумерации этих пакетов, может свидетельствовать о проблемах в канале передачи данных</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>b8b5048f89c9495a8ed832dc917a1456</uuid>
+                    <name>Общее количество обработанных пакетов</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.22.110.103.95.105.112.115.101.99.95.112.97.99.107.101.116.115.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_ipsec_packets_total</key>
+                    <delay>10m</delay>
+                    <status>DISABLED</status>
+                    <description>Общее количество обработанных пакетов</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>6fd4ce44d0904e0ebb6bb0d15241d6df</uuid>
+                    <name>Текущая скорость обработки пакетов на вход и на выход</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.18.110.103.95.105.112.115.101.99.95.112.112.115.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_ipsec_pps_total</key>
+                    <delay>10m</delay>
+                    <status>DISABLED</status>
+                    <description>Текущая скорость обработки пакетов на вход и на выход
+Измеряется в количестве пакетов в секунду</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>f82d4457040046abb00514f2b0bc29cb</uuid>
+                    <name>Общее количество активных соединений к VPN-сервису</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.20.110.103.95.105.112.95.119.115.95.99.111.110.110.95.97.99.116.105.118.101.1</snmp_oid>
+                    <key>ng_ip_ws_conn_active</key>
+                    <delay>10m</delay>
+                    <status>DISABLED</status>
+                    <description>Общее количество активных соединений к VPN-сервису
+Если сильно превышает значение ng_ip_ws_conn_total — исчерпание лимита исходящих портов, требуется переработка конфигурации</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>e8895694371c441381a89d66dea02f1b</uuid>
+                    <name>Общее количество соединений к VPN-сервису</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.19.110.103.95.105.112.95.119.115.95.99.111.110.110.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_ip_ws_conn_total</key>
+                    <delay>10m</delay>
+                    <status>DISABLED</status>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>13ce5713eaab4786a9a87b39b5df51ad</uuid>
+                    <name>Количество мастер-процессов ng-nginx.</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.26.110.103.95.110.103.105.110.120.95.109.97.115.116.101.114.95.112.114.111.99.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_nginx_master_proc_total</key>
+                    <delay>10m</delay>
+                    <description>Количество мастер-процессов ng-nginx.
+В процессе нормальной работы меняться не должно. Значение = 0 — критическая ошибка</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>ade33f6b7af44ad3b49919a624eb3293</uuid>
+                            <expression>last(/Ngate/ng_nginx_master_proc_total)=0</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_nginx_master_proc_total)&gt;0</recovery_expression>
+                            <name>Количество мастер-процессов ng-nginx = 0</name>
+                            <priority>DISASTER</priority>
+                            <description>В процессе нормальной работы меняться не должно. Значение = 0 — критическая ошибка</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>fccb6dfcc8da4ec8a554893592c4f9f4</uuid>
+                    <name>Количество рабочих процессов ng-nginx</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.26.110.103.95.110.103.105.110.120.95.119.111.114.107.101.114.95.112.114.111.99.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_nginx_worker_proc_total</key>
+                    <delay>10m</delay>
+                    <description>Количество рабочих процессов ng-nginx
+В процессе нормальной работы меняться не должно. Значение = 0 — критическая ошибка. Меньше чем указанно в конфигурации — ошибка</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>1d8b10bc86024dd690fba4ba217d0b70</uuid>
+                            <expression>last(/Ngate/ng_nginx_worker_proc_total)=0</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_nginx_worker_proc_total)&gt;0</recovery_expression>
+                            <name>Количество рабочих процессов ng-nginx = 0</name>
+                            <priority>DISASTER</priority>
+                            <description>В процессе нормальной работы меняться не должно. Значение = 0 — критическая ошибка. Меньше чем указанно в конфигурации — ошибка</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>c089c667d27d441588a7e302ff359c96</uuid>
+                    <name>Общее количество входящих ssh-соединений</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.17.110.103.95.115.115.104.95.99.111.110.110.95.116.111.116.97.108.1</snmp_oid>
+                    <key>ng_ssh_conn_total</key>
+                    <delay>10m</delay>
+                    <description>Общее количество входящих ssh-соединений</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>27a5624aed24432e861cb94ab4ea6138</uuid>
+                    <name>Количество ssh-соединений с уникальных IP адресов</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.18.110.103.95.115.115.104.95.99.111.110.110.95.117.110.105.113.117.101.1</snmp_oid>
+                    <key>ng_ssh_conn_unique</key>
+                    <delay>10m</delay>
+                    <description>Количество ssh-соединений с уникальных IP адресов</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>2546134418bf488588e348b65f1e68b6</uuid>
+                    <name>Показатель состояния памяти БД сессий ng_tnt_arena_used_ratio</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.116.110.116.95.97.114.101.110.97.95.117.115.101.100.95.114.97.116.105.111.1</snmp_oid>
+                    <key>ng_tnt_arena_used_ratio</key>
+                    <delay>10m</delay>
+                    <value_type>FLOAT</value_type>
+                    <description>Показатель состояния памяти БД сессий
+Значения:
+o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
+o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
+При фрагментации - требуется перезагрузка Узла или перепубликация конфигурации. При недостатке памяти - необходимо память увеличить</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>589f0b9fb27541b18b624cf500067349</uuid>
+                            <expression>last(/Ngate/ng_tnt_arena_used_ratio)&gt;=50</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_tnt_arena_used_ratio)&lt;50</recovery_expression>
+                            <name>ng_tnt_arena_used_ratio &gt; 50%</name>
+                            <priority>AVERAGE</priority>
+                            <description>Значения:
+o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
+o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
+При фрагментации - требуется перезагрузка Узла или перепубликация конфигурации. При недостатке памяти - необходимо память увеличить</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>24354349e2b44fbcad4ce7a1c437bb16</uuid>
+                            <expression>last(/Ngate/ng_tnt_arena_used_ratio)&gt;=80</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_tnt_arena_used_ratio)&lt;80</recovery_expression>
+                            <name>ng_tnt_arena_used_ratio &gt; 80%</name>
+                            <priority>DISASTER</priority>
+                            <description>Значения:
+o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
+o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
+При фрагментации - требуется перезагрузка Узла или перепубликация конфигурации. При недостатке памяти - необходимо память увеличить</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>eb960b22960e4928a10f1a2f16559cf9</uuid>
+                    <name>Состояние orphan БД сессий</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.16.110.103.95.116.110.116.95.105.115.95.111.114.112.104.97.110.1</snmp_oid>
+                    <key>ng_tnt_is_orphan</key>
+                    <delay>10m</delay>
+                    <description>Состояние orphan БД сессий
+Значение &quot;0&quot; — всё хорошо; значение &quot;!= 0&quot; — нарушена работоспособность кластера (актуально для кластера)</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>1d142ec61e8b4bb7bdf849417297ac8b</uuid>
+                            <expression>last(/Ngate/ng_tnt_is_orphan)&lt;&gt;0</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_tnt_is_orphan)=0</recovery_expression>
+                            <name>Состояние orphan БД сессий = 0</name>
+                            <priority>DISASTER</priority>
+                            <description>Значение &quot;0&quot; — всё хорошо; значение &quot;!= 0&quot; — нарушена работоспособность кластера (актуально для кластера)</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>282f66acba9c49e4a25b9be46bbd478c</uuid>
+                    <name>Показатель состояния памяти БД сессий ng_tnt_items_used_ratio</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.116.110.116.95.105.116.101.109.115.95.117.115.101.100.95.114.97.116.105.111.1</snmp_oid>
+                    <key>ng_tnt_items_used_ratio</key>
+                    <delay>10m</delay>
+                    <description>Показатель состояния памяти БД сессий
+Значения:
+o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
+o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
+При фрагментации - требуется перезагрузка Узла или перепубликация конфигурации. При недостатке памяти - необходимо память увеличить</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>5b83e298d50f484e8cde106d41714bad</uuid>
+                            <expression>last(/Ngate/ng_tnt_items_used_ratio)&gt;50</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_tnt_items_used_ratio)&lt;50</recovery_expression>
+                            <name>ng_tnt_items_used_ratio&gt;50%</name>
+                            <priority>AVERAGE</priority>
+                            <description>Значения:
+o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
+o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
+При фрагментации - требуется перезагрузка Узла или перепубликация конфигурации. При недостатке памяти - необходимо память увеличить</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>02e50a2e64d64289aaa6d0a5e2229767</uuid>
+                            <expression>last(/Ngate/ng_tnt_items_used_ratio)&gt;80</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_tnt_items_used_ratio)&lt;80</recovery_expression>
+                            <name>ng_tnt_items_used_ratio&gt;80%</name>
+                            <priority>DISASTER</priority>
+                            <description>Значения:
+o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
+o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
+При фрагментации - требуется перезагрузка Узла или перепубликация конфигурации. При недостатке памяти - необходимо память увеличить</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>145c0cb85ea64796b77d2de4689fe00e</uuid>
+                    <name>Показатель состояния памяти БД сессий ng_tnt_quota_used_ratio</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.116.110.116.95.113.117.111.116.97.95.117.115.101.100.95.114.97.116.105.111.1</snmp_oid>
+                    <key>ng_tnt_quota_used_ratio</key>
+                    <delay>10m</delay>
+                    <value_type>FLOAT</value_type>
+                    <description>Показатель состояния памяти БД сессий
+&gt; 0.9 — не хватает памяти. Рассмотрите возможность увеличения памяти для БД сессий в настройках конфигурации</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>741219f7523343119bffe887f2f3e5af</uuid>
+                            <expression>last(/Ngate/ng_tnt_quota_used_ratio)&gt;50</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_tnt_quota_used_ratio)&lt;50</recovery_expression>
+                            <name>ng_tnt_quota_used_ratio больше 50%</name>
+                            <priority>AVERAGE</priority>
+                            <description>Значения:
+o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
+o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
+При фрагментации - требуется перезагрузка Узла или перепубликация конфигурации. При недостатке памяти - необходимо память увеличить</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                        <trigger>
+                            <uuid>f2bd03166b9a4ed1a9d9d227d46c9fe3</uuid>
+                            <expression>last(/Ngate/ng_tnt_quota_used_ratio)&gt;80</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_tnt_quota_used_ratio)&lt;80</recovery_expression>
+                            <name>ng_tnt_quota_used_ratio больше 80%</name>
+                            <priority>DISASTER</priority>
+                            <description>Значения:
+o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
+o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
+При фрагментации - требуется перезагрузка Узла или перепубликация конфигурации. При недостатке памяти - необходимо память увеличить</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>e026c19422e745b88258048809a8dd69</uuid>
+                    <name>Количество запросов/секунду к БД сессий</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.15.110.103.95.116.110.116.95.82.80.83.95.99.97.108.108.1</snmp_oid>
+                    <key>ng_tnt_RPS_call</key>
+                    <delay>10m</delay>
+                    <description>Количество запросов/секунду к БД сессий
+Приближается или превышает значение 60000 — возможны проблемы в работе</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>03d9bc1126ca4c72a08d88eaeddf70f0</uuid>
+                            <expression>last(/Ngate/ng_tnt_RPS_call)&gt;60000</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Ngate/ng_tnt_RPS_call)&lt;60000</recovery_expression>
+                            <name>Количество запросов/секунду к БД сессий &gt; 60000</name>
+                            <priority>HIGH</priority>
+                            <description>Приближается или превышает значение 60000 — возможны проблемы в работе</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>ngate</tag>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>7bc64f71066f45df82f10e8d30f7a642</uuid>
+                    <name>Общее количество зарегистрированных VPN-сессий</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.22.110.103.95.118.112.110.95.115.101.115.115.105.111.110.115.95.97.99.116.105.118.101.1</snmp_oid>
+                    <key>ng_vpn_sessions_active</key>
+                    <delay>10m</delay>
+                    <status>DISABLED</status>
+                    <description>Общее количество зарегистрированных VPN-сессий
+Сумма подключений по всем узлам кластера больше ограничения лицензии — тревожное оповещение (ALARM)</description>
+                    <tags>
+                        <tag>
+                            <tag>ngate</tag>
+                        </tag>
+                    </tags>
+                </item>
+            </items>
+        </template>
+    </templates>
+</zabbix_export>
