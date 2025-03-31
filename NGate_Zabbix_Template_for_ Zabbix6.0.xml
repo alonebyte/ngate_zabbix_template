@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>6.0</version>
-    <date>2025-02-27T14:56:45Z</date>
+    <date>2025-03-31T13:56:55Z</date>
     <groups>
         <group>
             <uuid>36bff6c29af64692839d077febfc7079</uuid>
@@ -28,7 +28,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.18.110.103.95.67.80.85.95.116.101.109.112.101.114.97.116.117.114.101.1</snmp_oid>
                     <key>ng_CPU_temperature</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <value_type>FLOAT</value_type>
                     <description>Температура самого горячего ядра CPU в градусах
 Значение &gt; 80 — тревожное оповещение (ALARM)</description>
@@ -61,6 +62,7 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.3.1.2.25.110.103.95.99.114.101.100.101.110.116.105.97.108.115.95.101.120.112.105.114.97.116.105.111.110</snmp_oid>
                     <key>ng_credentials_expiration</key>
                     <delay>1d</delay>
+                    <history>30d</history>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
                     <description>Даты окончания сроков действия сертификатов и контейнеров ключей в формате JSON
@@ -78,6 +80,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.25.110.103.95.99.114.101.100.95.101.120.112.105.114.121.95.99.111.110.102.105.103.95.49.95.109.1</snmp_oid>
                     <key>ng_cred_expiry_config_1_m</key>
                     <delay>1d</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Сроки действия сертификатов и контейнеров ключей для порталов заканчиваются в течение месяца.
 0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
                     <tags>
@@ -125,6 +129,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.25.110.103.95.99.114.101.100.95.101.120.112.105.114.121.95.99.111.110.102.105.103.95.110.111.119.1</snmp_oid>
                     <key>ng_cred_expiry_config_now</key>
                     <delay>1d</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Сроки действия сертификатов и контейнеров ключей для порталов закончились
 0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
                     <tags>
@@ -172,6 +178,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.24.110.103.95.99.114.101.100.95.101.120.112.105.114.121.95.105.110.102.114.97.95.49.95.109.1</snmp_oid>
                     <key>ng_cred_expiry_infra_1_m</key>
                     <delay>1d</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Сроки действия сертификатов и контейнеров ключей внутренней PKI заканчиваются в течение месяца
 
 0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
@@ -220,6 +228,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.24.110.103.95.99.114.101.100.95.101.120.112.105.114.121.95.105.110.102.114.97.95.110.111.119.1</snmp_oid>
                     <key>ng_cred_expiry_infra_now</key>
                     <delay>1d</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Сроки действия сертификатов и контейнеров ключей внутренней PKI (NGate) закончились
 
 0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
@@ -268,6 +278,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.26.110.103.95.99.114.101.100.95.101.120.112.105.114.121.95.115.101.114.118.105.99.101.95.49.95.109.1</snmp_oid>
                     <key>ng_cred_expiry_service_1_m</key>
                     <delay>1d</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Сроки действия сертификатов и контейнеров ключей сервисных ключей заканчиваются в течение месяца
 0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
                     <tags>
@@ -315,6 +327,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.26.110.103.95.99.114.101.100.95.101.120.112.105.114.121.95.115.101.114.118.105.99.101.95.110.111.119.1</snmp_oid>
                     <key>ng_cred_expiry_service_now</key>
                     <delay>1d</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Сроки действия сертификатов и контейнеров ключей сервисных ключей закончились
 0 — корректные сертификаты, 1 — у ключей или сертификатов истёк срок действия, 3 — дату окончания срока действия сертификата определить не удалось, 5 — неизвестная ошибка, 7 — ошибка выполнения проверки</description>
                     <tags>
@@ -360,7 +374,7 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <name>ng_extended_healthcheck</name>
                     <type>HTTP_AGENT</type>
                     <key>ng_extended_healthcheck</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
                     <url>http://{HOST.IP}:7020/extended_healthcheck</url>
@@ -375,7 +389,7 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <name>Статус config-demon</name>
                     <type>HTTP_AGENT</type>
                     <key>ng_extended_healthcheck_config_demon</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
                     <preprocessing>
@@ -413,7 +427,7 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <name>Статус directory-service</name>
                     <type>HTTP_AGENT</type>
                     <key>ng_extended_healthcheck_directory_service</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
                     <preprocessing>
@@ -451,7 +465,7 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <name>Статус ip-ws-proxy</name>
                     <type>HTTP_AGENT</type>
                     <key>ng_extended_healthcheck_ip_ws_proxy</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
                     <preprocessing>
@@ -489,7 +503,7 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <name>Статус nginx</name>
                     <type>HTTP_AGENT</type>
                     <key>ng_extended_healthcheck_nginx</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
                     <preprocessing>
@@ -527,7 +541,7 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <name>Статус расширенной проверки extended_healthcheck</name>
                     <type>HTTP_AGENT</type>
                     <key>ng_extended_healthcheck_result</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
                     <description>0 - все сервисы в расширенной проверке в статусе &quot;ОК&quot;,
@@ -567,7 +581,7 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <name>Статус ssh</name>
                     <type>HTTP_AGENT</type>
                     <key>ng_extended_healthcheck_ssh</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
                     <preprocessing>
@@ -605,7 +619,7 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <name>Статус tarantool</name>
                     <type>HTTP_AGENT</type>
                     <key>ng_extended_healthcheck_tarantool</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
                     <preprocessing>
@@ -644,7 +658,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.104.116.116.112.115.95.99.111.110.110.95.105.110.95.97.99.116.105.118.101.1</snmp_oid>
                     <key>ng_https_conn_in_active</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Количество входящих активных https-соединений</description>
                     <tags>
                         <tag>
@@ -658,7 +673,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.22.110.103.95.104.116.116.112.115.95.99.111.110.110.95.105.110.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_https_conn_in_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>По результатам текущего мониторинга с учетом политики информационной безопасности организации</description>
                     <tags>
                         <tag>
@@ -672,7 +688,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.104.116.116.112.115.95.99.111.110.110.95.105.110.95.117.110.105.113.117.101.1</snmp_oid>
                     <key>ng_https_conn_in_unique</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Количество входящих уникальных https-соединений</description>
                     <tags>
                         <tag>
@@ -686,7 +703,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.104.116.116.112.95.99.111.110.110.95.111.117.116.95.97.99.116.105.118.101.1</snmp_oid>
                     <key>ng_http_conn_out_active</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Количество активных исходящих http-соединений</description>
                     <tags>
                         <tag>
@@ -700,7 +718,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.22.110.103.95.104.116.116.112.95.99.111.110.110.95.111.117.116.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_http_conn_out_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Общее количество исходящих http-соединений</description>
                     <tags>
                         <tag>
@@ -714,7 +733,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.18.110.103.95.105.112.115.101.99.95.98.112.115.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_ipsec_bps_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <status>DISABLED</status>
                     <description>Текущая скорость обработки трафика на вход и на выход
 Измеряется в байтах в секунду</description>
@@ -730,7 +750,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.20.110.103.95.105.112.115.101.99.95.98.121.116.101.115.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_ipsec_bytes_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <status>DISABLED</status>
                     <description>Общий объем обработанного трафика
 Измеряется в байтах</description>
@@ -746,7 +767,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.105.112.115.101.99.95.101.115.112.95.99.111.110.110.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_ipsec_esp_conn_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <status>DISABLED</status>
                     <description>Общее количество установленных ESP соединений (ESP SA)</description>
                     <tags>
@@ -761,7 +783,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.29.110.103.95.105.112.115.101.99.95.102.97.105.108.101.100.95.112.97.99.107.101.116.115.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_ipsec_failed_packets_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <status>DISABLED</status>
                     <description>Количество пакетов (в рамках текущих установленных соединений) с неверной информацией для аутентификации
 Резкое увеличение может свидетельствовать как о появлении проблем в канале передачи данных, приводящих к порче содержимого IP-пакета, так и о попытке злоумышленника провести атаку</description>
@@ -777,7 +800,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.26.110.103.95.105.112.115.101.99.95.104.117.103.101.112.97.103.101.115.95.107.98.95.117.115.101.100.1</snmp_oid>
                     <key>ng_ipsec_hugepages_kb_used</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <status>DISABLED</status>
                     <description>Общий объем используемых hugepages
 Измеряется в килобайтах</description>
@@ -793,7 +817,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.105.112.115.101.99.95.105.107.101.95.99.111.110.110.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_ipsec_ike_conn_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <status>DISABLED</status>
                     <description>Общее количество установленных IKE соединений (IKE SA)</description>
                     <tags>
@@ -808,7 +833,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.105.112.115.101.99.95.109.97.105.110.95.99.111.114.101.95.108.111.97.100.1</snmp_oid>
                     <key>ng_ipsec_main_core_load</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <status>DISABLED</status>
                     <description>Загрузка основного ядра IPsec, осуществляющего распределение пакетов (main worker core)
 Значение от 0 до 100 в процентах. Значения выше 90 свидетельствуют о достижении предельной производительности</description>
@@ -842,7 +868,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.21.110.103.95.105.112.115.101.99.95.109.105.115.115.101.100.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_ipsec_missed_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <status>DISABLED</status>
                     <description>Оценка количества потерянных входящих пакетов у текущих соединений
 Резкий рост примерного количества потерянных входящих пакетов, рассчитываемого на основе анализа сквозной нумерации этих пакетов, может свидетельствовать о проблемах в канале передачи данных</description>
@@ -858,7 +885,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.22.110.103.95.105.112.115.101.99.95.112.97.99.107.101.116.115.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_ipsec_packets_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <status>DISABLED</status>
                     <description>Общее количество обработанных пакетов</description>
                     <tags>
@@ -873,7 +901,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.18.110.103.95.105.112.115.101.99.95.112.112.115.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_ipsec_pps_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <status>DISABLED</status>
                     <description>Текущая скорость обработки пакетов на вход и на выход
 Измеряется в количестве пакетов в секунду</description>
@@ -889,7 +918,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.20.110.103.95.105.112.95.119.115.95.99.111.110.110.95.97.99.116.105.118.101.1</snmp_oid>
                     <key>ng_ip_ws_conn_active</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <status>DISABLED</status>
                     <description>Общее количество активных соединений к VPN-сервису
 Если сильно превышает значение ng_ip_ws_conn_total — исчерпание лимита исходящих портов, требуется переработка конфигурации</description>
@@ -905,7 +935,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.19.110.103.95.105.112.95.119.115.95.99.111.110.110.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_ip_ws_conn_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <status>DISABLED</status>
                     <tags>
                         <tag>
@@ -919,7 +950,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.26.110.103.95.110.103.105.110.120.95.109.97.115.116.101.114.95.112.114.111.99.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_nginx_master_proc_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Количество мастер-процессов ng-nginx.
 В процессе нормальной работы меняться не должно. Значение = 0 — критическая ошибка</description>
                     <tags>
@@ -951,7 +983,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.26.110.103.95.110.103.105.110.120.95.119.111.114.107.101.114.95.112.114.111.99.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_nginx_worker_proc_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Количество рабочих процессов ng-nginx
 В процессе нормальной работы меняться не должно. Значение = 0 — критическая ошибка. Меньше чем указанно в конфигурации — ошибка</description>
                     <tags>
@@ -983,7 +1016,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.17.110.103.95.115.115.104.95.99.111.110.110.95.116.111.116.97.108.1</snmp_oid>
                     <key>ng_ssh_conn_total</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Общее количество входящих ssh-соединений</description>
                     <tags>
                         <tag>
@@ -997,7 +1031,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.18.110.103.95.115.115.104.95.99.111.110.110.95.117.110.105.113.117.101.1</snmp_oid>
                     <key>ng_ssh_conn_unique</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Количество ssh-соединений с уникальных IP адресов</description>
                     <tags>
                         <tag>
@@ -1011,7 +1046,8 @@ https://github.com/alonebyte/ngate_zabbix_template</description>
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.116.110.116.95.97.114.101.110.97.95.117.115.101.100.95.114.97.116.105.111.1</snmp_oid>
                     <key>ng_tnt_arena_used_ratio</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <value_type>FLOAT</value_type>
                     <description>Показатель состояния памяти БД сессий
 Значения:
@@ -1026,29 +1062,11 @@ o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_use
                     <triggers>
                         <trigger>
                             <uuid>589f0b9fb27541b18b624cf500067349</uuid>
-                            <expression>last(/Ngate/ng_tnt_arena_used_ratio)&gt;=50</expression>
+                            <expression>last(/Ngate/ng_tnt_arena_used_ratio)&gt;=90</expression>
                             <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
-                            <recovery_expression>last(/Ngate/ng_tnt_arena_used_ratio)&lt;50</recovery_expression>
-                            <name>ng_tnt_arena_used_ratio &gt; 50%</name>
+                            <recovery_expression>last(/Ngate/ng_tnt_arena_used_ratio)&lt;90</recovery_expression>
+                            <name>ng_tnt_arena_used_ratio больше 90%</name>
                             <priority>AVERAGE</priority>
-                            <description>Значения:
-o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
-o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
-При фрагментации - требуется перезагрузка Узла или перепубликация конфигурации. При недостатке памяти - необходимо память увеличить</description>
-                            <manual_close>YES</manual_close>
-                            <tags>
-                                <tag>
-                                    <tag>ngate</tag>
-                                </tag>
-                            </tags>
-                        </trigger>
-                        <trigger>
-                            <uuid>24354349e2b44fbcad4ce7a1c437bb16</uuid>
-                            <expression>last(/Ngate/ng_tnt_arena_used_ratio)&gt;=80</expression>
-                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
-                            <recovery_expression>last(/Ngate/ng_tnt_arena_used_ratio)&lt;80</recovery_expression>
-                            <name>ng_tnt_arena_used_ratio &gt; 80%</name>
-                            <priority>DISASTER</priority>
                             <description>Значения:
 o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
 o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
@@ -1068,7 +1086,8 @@ o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_use
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.16.110.103.95.116.110.116.95.105.115.95.111.114.112.104.97.110.1</snmp_oid>
                     <key>ng_tnt_is_orphan</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Состояние orphan БД сессий
 Значение &quot;0&quot; — всё хорошо; значение &quot;!= 0&quot; — нарушена работоспособность кластера (актуально для кластера)</description>
                     <tags>
@@ -1100,7 +1119,9 @@ o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_use
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.116.110.116.95.105.116.101.109.115.95.117.115.101.100.95.114.97.116.105.111.1</snmp_oid>
                     <key>ng_tnt_items_used_ratio</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
+                    <value_type>FLOAT</value_type>
                     <description>Показатель состояния памяти БД сессий
 Значения:
 o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
@@ -1114,29 +1135,11 @@ o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_use
                     <triggers>
                         <trigger>
                             <uuid>5b83e298d50f484e8cde106d41714bad</uuid>
-                            <expression>last(/Ngate/ng_tnt_items_used_ratio)&gt;50</expression>
+                            <expression>last(/Ngate/ng_tnt_items_used_ratio)&gt;90</expression>
                             <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
-                            <recovery_expression>last(/Ngate/ng_tnt_items_used_ratio)&lt;50</recovery_expression>
-                            <name>ng_tnt_items_used_ratio&gt;50%</name>
+                            <recovery_expression>last(/Ngate/ng_tnt_items_used_ratio)&lt;90</recovery_expression>
+                            <name>ng_tnt_items_used_ratio больше 90%</name>
                             <priority>AVERAGE</priority>
-                            <description>Значения:
-o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
-o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
-При фрагментации - требуется перезагрузка Узла или перепубликация конфигурации. При недостатке памяти - необходимо память увеличить</description>
-                            <manual_close>YES</manual_close>
-                            <tags>
-                                <tag>
-                                    <tag>ngate</tag>
-                                </tag>
-                            </tags>
-                        </trigger>
-                        <trigger>
-                            <uuid>02e50a2e64d64289aaa6d0a5e2229767</uuid>
-                            <expression>last(/Ngate/ng_tnt_items_used_ratio)&gt;80</expression>
-                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
-                            <recovery_expression>last(/Ngate/ng_tnt_items_used_ratio)&lt;80</recovery_expression>
-                            <name>ng_tnt_items_used_ratio&gt;80%</name>
-                            <priority>DISASTER</priority>
                             <description>Значения:
 o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
 o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
@@ -1156,7 +1159,8 @@ o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_use
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.23.110.103.95.116.110.116.95.113.117.111.116.97.95.117.115.101.100.95.114.97.116.105.111.1</snmp_oid>
                     <key>ng_tnt_quota_used_ratio</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <value_type>FLOAT</value_type>
                     <description>Показатель состояния памяти БД сессий
 &gt; 0.9 — не хватает памяти. Рассмотрите возможность увеличения памяти для БД сессий в настройках конфигурации</description>
@@ -1168,29 +1172,11 @@ o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_use
                     <triggers>
                         <trigger>
                             <uuid>741219f7523343119bffe887f2f3e5af</uuid>
-                            <expression>last(/Ngate/ng_tnt_quota_used_ratio)&gt;50</expression>
+                            <expression>last(/Ngate/ng_tnt_quota_used_ratio)&gt;90</expression>
                             <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
-                            <recovery_expression>last(/Ngate/ng_tnt_quota_used_ratio)&lt;50</recovery_expression>
-                            <name>ng_tnt_quota_used_ratio больше 50%</name>
+                            <recovery_expression>last(/Ngate/ng_tnt_quota_used_ratio)&lt;90</recovery_expression>
+                            <name>ng_tnt_quota_used_ratio больше 90%</name>
                             <priority>AVERAGE</priority>
-                            <description>Значения:
-o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
-o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
-При фрагментации - требуется перезагрузка Узла или перепубликация конфигурации. При недостатке памяти - необходимо память увеличить</description>
-                            <manual_close>YES</manual_close>
-                            <tags>
-                                <tag>
-                                    <tag>ngate</tag>
-                                </tag>
-                            </tags>
-                        </trigger>
-                        <trigger>
-                            <uuid>f2bd03166b9a4ed1a9d9d227d46c9fe3</uuid>
-                            <expression>last(/Ngate/ng_tnt_quota_used_ratio)&gt;80</expression>
-                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
-                            <recovery_expression>last(/Ngate/ng_tnt_quota_used_ratio)&lt;80</recovery_expression>
-                            <name>ng_tnt_quota_used_ratio больше 80%</name>
-                            <priority>DISASTER</priority>
                             <description>Значения:
 o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
 o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
@@ -1210,7 +1196,8 @@ o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_use
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.15.110.103.95.116.110.116.95.82.80.83.95.99.97.108.108.1</snmp_oid>
                     <key>ng_tnt_RPS_call</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <description>Количество запросов/секунду к БД сессий
 Приближается или превышает значение 60000 — возможны проблемы в работе</description>
                     <tags>
@@ -1242,7 +1229,8 @@ o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_use
                     <type>SNMP_AGENT</type>
                     <snmp_oid>.1.3.6.1.4.1.8072.1.3.2.4.1.2.22.110.103.95.118.112.110.95.115.101.115.115.105.111.110.115.95.97.99.116.105.118.101.1</snmp_oid>
                     <key>ng_vpn_sessions_active</key>
-                    <delay>10m</delay>
+                    <history>30d</history>
+                    <trends>90d</trends>
                     <status>DISABLED</status>
                     <description>Общее количество зарегистрированных VPN-сессий
 Сумма подключений по всем узлам кластера больше ограничения лицензии — тревожное оповещение (ALARM)</description>
@@ -1255,4 +1243,43 @@ o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_use
             </items>
         </template>
     </templates>
+    <triggers>
+        <trigger>
+            <uuid>24354349e2b44fbcad4ce7a1c437bb16</uuid>
+            <expression>last(/Ngate/ng_tnt_arena_used_ratio)&gt;=90 and last(/Ngate/ng_tnt_quota_used_ratio)&gt;=90 and last(/Ngate/ng_tnt_arena_used_ratio)&gt;=90</expression>
+            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+            <recovery_expression>last(/Ngate/ng_tnt_arena_used_ratio)&lt;=90 and last(/Ngate/ng_tnt_quota_used_ratio)&lt;=90 and last(/Ngate/ng_tnt_arena_used_ratio)&lt;=90</recovery_expression>
+            <name>Недостаточно памяти</name>
+            <priority>DISASTER</priority>
+            <description>Значения:
+o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
+o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
+При фрагментации - требуется перезагрузка Узла или перепубликация конфигурации. При недостатке памяти - необходимо память увеличить</description>
+            <manual_close>YES</manual_close>
+            <tags>
+                <tag>
+                    <tag>ngate</tag>
+                </tag>
+            </tags>
+        </trigger>
+        <trigger>
+            <uuid>4527666772384406b0f5414a6110d9e6</uuid>
+            <expression>last(/Ngate/ng_tnt_arena_used_ratio)&gt;=50 and
+last(/Ngate/ng_tnt_arena_used_ratio)&lt;=90 and last(/Ngate/ng_tnt_quota_used_ratio)&gt;=90 and last(/Ngate/ng_tnt_arena_used_ratio)&gt;=90</expression>
+            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+            <recovery_expression>last(/Ngate/ng_tnt_arena_used_ratio)&lt;=50 and last(/Ngate/ng_tnt_quota_used_ratio)&lt;=90 and last(/Ngate/ng_tnt_arena_used_ratio)&lt;=90</recovery_expression>
+            <name>Память сильно фрагментирована</name>
+            <priority>DISASTER</priority>
+            <description>Значения:
+o	items_used_ratio &gt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — памяти сильно не хватает;
+o	0.5 &lt; items_used_ratio &lt; 0.9, и quota_used_ratio &gt; 0.9, и arena_used_ratio &gt; 0.9 — - память сильно фрагментирована
+При фрагментации - требуется перезагрузка Узла или перепубликация конфигурации. При недостатке памяти - необходимо память увеличить</description>
+            <manual_close>YES</manual_close>
+            <tags>
+                <tag>
+                    <tag>ngate</tag>
+                </tag>
+            </tags>
+        </trigger>
+    </triggers>
 </zabbix_export>
